@@ -22,7 +22,9 @@ export default function App() {
           headerTitle: '', headerBackVisible: false, navigationBarHidden: true, gestureEnabled: false
           , headerStyle: {
             backgroundColor: '#131821'
-          }
+          },
+          animationDuration: 500,
+          animation: 'fade'
         }}>
           <Stack.Screen
             name="Home"
