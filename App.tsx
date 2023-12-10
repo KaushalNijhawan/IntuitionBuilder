@@ -21,7 +21,7 @@ export default function App() {
         <Stack.Navigator initialRouteName='Home' screenOptions={{
           headerTitle: '', headerBackVisible: false, navigationBarHidden: true, gestureEnabled: false
           , headerStyle: {
-            backgroundColor: '#131821'
+            backgroundColor: 'white'
           },
           animationDuration: 500,
           animation: 'fade'
