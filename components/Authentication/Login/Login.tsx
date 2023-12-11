@@ -15,6 +15,7 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
     const screenHeight = Dimensions.get('window').height;
     const screenWidth = Dimensions.get('window').width;
     const [password, setPassword] = useState<string>();
+    const [showPassword , setShowPassword] = useState<boolean>(false);
     useEffect(() => {
         navigation.setOptions({
             headerStyle: {
@@ -41,8 +42,9 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
                     borderRadius: 20
                 }}>
                     <Text style={{ color: 'black', fontSize: 20, marginTop:'5%', marginBottom:'5%' }}>Please Login with an Email!</Text>
-                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
-                    <Input placeholder="Password..." secureTextEntry = {true} textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
+                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChangeText={(text) => setEmail(text) } />
+                    <Input placeholder="Password..." secureTextEntry = {showPassword} textContentType="password" inputStyle={{ color: 'black' }} onChangeText={(e) => setPassword(e)} 
+                    rightIcon={<Icon name="eye" size={25} color="black" onPress={() => setShowPassword(!showPassword)} />}/>
                     <Button title={'Login'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10}/>
                     <Text>Or</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '8%' }}>
