@@ -4,6 +4,7 @@ import { AppStackParamList } from "../../../App";
 import { Button } from "@rneui/themed";
 import { Card, Input } from "@rneui/base";
 import { useEffect, useState } from "react";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 type HomeScreenProps = {
     navigation: StackNavigationProp<AppStackParamList, 'Login'>;
@@ -41,7 +42,7 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
                 }}>
                     <Text style={{ color: 'black', fontSize: 20, marginTop:'5%', marginBottom:'5%' }}>Please Login with an Email!</Text>
                     <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
-                    <Input placeholder="Password..." textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
+                    <Input placeholder="Password..." secureTextEntry = {true} textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
                     <Button title={'Login'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10}/>
                     <Text>Or</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '8%' }}>

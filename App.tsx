@@ -5,9 +5,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './components/Authentication/Login/Login';
 import SignUp from './components/Authentication/SignUp/SignUp';
 import { RecoilRoot, useSetRecoilState } from "recoil";
-import { useEffect } from "react";
-import app from "./components/Database/Firebase";
-import { databaseConnectionAtom } from "./components/Atoms/DatabseAtom";
 
 export type AppStackParamList = {
   Home: undefined;
@@ -17,11 +14,8 @@ export type AppStackParamList = {
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export default function App() {
-  const setDatabseConnection = useSetRecoilState(databaseConnectionAtom);
-  useEffect(()=>{
-    console.log(app);
-    
-  } , []);
+  
+  
   return (
     <RecoilRoot>
       <View style={styles.container}>

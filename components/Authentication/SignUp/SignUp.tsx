@@ -2,7 +2,8 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { Button, Input } from "@rneui/base";
 import { View, Text, KeyboardAvoidingView, Platform, Dimensions, Image } from "react-native";
 import { AppStackParamList } from "../../../App";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 type HomeScreenProps = {
     navigation: StackNavigationProp<AppStackParamList, 'SignUp'>;
@@ -11,6 +12,12 @@ type HomeScreenProps = {
 const SignUp : React.FC<HomeScreenProps>  = ({navigation}) => {
     const screenHeight = Dimensions.get('window').height;
     const screenWidth = Dimensions.get('window').width;
+
+    const [username , setUsername] = useState<string>('');
+    const [password , setPassword] = useState<string>('');
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
     useEffect(()=>{
         navigation.setOptions({
             headerStyle:{
@@ -36,9 +43,10 @@ const SignUp : React.FC<HomeScreenProps>  = ({navigation}) => {
                     borderRadius: 20
                 }}>
                     <Text style={{ color: 'black', fontSize: 20,  marginTop:'5%', marginBottom:'5%' }}>Create Account!</Text>
-                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
-                    <Input placeholder="Password..." textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
-                    <Input placeholder="Confirm Password..." textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
+                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChangeText={(text) => setUsername(text)} />
+                    <Input placeholder="Password..." secureTextEntry = {showPassword} textContentType="password" inputStyle={{ color: 'black' }} onChangeText={(text) => setPassword(text)} rightIcon = {<Icon name="eye" size={25} color="black" onPress={() => setShowPassword(!showPassword)}/>}/>
+                    <Input placeholder="Confirm Password..." secureTextEntry = {showConfirmPassword} textContentType={password.length > 2 ? "name" : "password"} inputStyle={{ color: 'black' }} onChangeText={(text) => setConfirmPassword(text)} 
+                    rightIcon={<Icon name="eye" size={25} color="black" onPress={() => setShowConfirmPassword(!showConfirmPassword)} />}/>
                     <Button title={'Create Account'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10} />
                     <Text>Or</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '8%' }}>
