@@ -15,7 +15,7 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
     const screenHeight = Dimensions.get('window').height;
     const screenWidth = Dimensions.get('window').width;
     const [password, setPassword] = useState<string>();
-    const [showPassword , setShowPassword] = useState<boolean>(false);
+    const [showPassword, setShowPassword] = useState<boolean>(true);
     useEffect(() => {
         navigation.setOptions({
             headerStyle: {
@@ -34,23 +34,24 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
                 flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '#131821',
                 height: screenHeight, width: '100%'
             }}>
-                <View style={{ width: '100%', height: ((screenHeight * 12) / 100), flexDirection: 'row', justifyContent: 'center' }}>
-                    <Image source={require('../../HomeComponent/logo.jpg')} style={{ height: '50%', width: '40%', resizeMode: 'contain' }} />
+                <View style={{ width: '100%', height: ((screenHeight * 20) / 100), flexDirection: 'row', justifyContent: 'center' }}>
+                    <Image source={require('../../HomeComponent/logo.jpg')} style={{ height: '55%', width: '50%', resizeMode: 'contain' }} />
                 </View>
                 <View style={{
-                    width: '100%', height: ((screenHeight * 88) / 100), backgroundColor: 'white', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
+                    width: '100%', height: ((screenHeight * 75) / 100), backgroundColor: 'white', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'center',
                     borderRadius: 20
                 }}>
-                    <Text style={{ color: 'black', fontSize: 20, marginTop:'5%', marginBottom:'5%' }}>Please Login with an Email!</Text>
-                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChangeText={(text) => setEmail(text) } />
-                    <Input placeholder="Password..." secureTextEntry = {showPassword} textContentType="password" inputStyle={{ color: 'black' }} onChangeText={(e) => setPassword(e)} 
-                    rightIcon={<Icon name="eye" size={25} color="black" onPress={() => setShowPassword(!showPassword)} />}/>
-                    <Button title={'Login'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10}/>
+                    <Text style={{ color: 'black', fontSize: 20, marginTop: '5%', marginBottom: '5%' }}>Please Login with an Email!</Text>
+                    <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChangeText={(text) => setEmail(text)} />
+                    <Input placeholder="Password..." secureTextEntry={showPassword} textContentType="password" inputStyle={{ color: 'black' }} onChangeText={(e) => setPassword(e)}
+                        rightIcon={<Icon name="eye" size={25} color="black" onPress={() => setShowPassword(!showPassword)} />} />
+                    <Button title={'Login'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10} />
                     <Text>Or</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '8%' }}>
-                        <Text style={{marginRight:'1%'}}>Already have Account</Text>
+                        <Text style={{ marginRight: '1%' }}>Already have Account</Text>
                         <Text style={{ textDecorationLine: 'underline', color: 'orange' }} onPress={handleRegister}>Register</Text>
                     </View>
+                    <Button color={"error"} style={{ width: (screenWidth * 75) / 100, marginTop: '5%' }} radius={10} title={"Google SignIn"} />
                 </View>
             </View>
         </KeyboardAvoidingView>

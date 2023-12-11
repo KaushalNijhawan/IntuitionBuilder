@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './components/Authentication/Login/Login';
 import SignUp from './components/Authentication/SignUp/SignUp';
 import { RecoilRoot, useSetRecoilState } from "recoil";
+import { registerRootComponent } from 'expo';
 
 export type AppStackParamList = {
   Home: undefined;
@@ -48,6 +49,7 @@ export default function App() {
     </RecoilRoot>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

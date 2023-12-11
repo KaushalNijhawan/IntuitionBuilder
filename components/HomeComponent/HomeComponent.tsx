@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { AppStackParamList } from "../../App";
 import { SafeAreaView } from "react-native-safe-area-context";
-import app from "../Database/Firebase";
+import {auth, db} from "../Database/Firebase";
 import { useSetRecoilState } from "recoil";
 import { databaseConnectionAtom } from "../Atoms/DatabseAtom";
 type HomeScreenProps = {
@@ -12,7 +12,7 @@ type HomeScreenProps = {
 const HomePage: React.FC<HomeScreenProps> = ({ navigation }) => {
     const setDatabseConnection = useSetRecoilState(databaseConnectionAtom);
     useEffect(() => {
-        setDatabseConnection(app);
+        setDatabseConnection(db);
         setTimeout(() => {
             navigation.navigate('Login');
         }, 3000);
