@@ -38,6 +38,7 @@ const SignUp : React.FC<HomeScreenProps>  = ({navigation}) => {
                     <Text style={{ color: 'black', fontSize: 20,  marginTop:'5%', marginBottom:'5%' }}>Create Account!</Text>
                     <Input placeholder="Email..." textContentType={"name"} inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
                     <Input placeholder="Password..." textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
+                    <Input placeholder="Confirm Password..." textContentType="password" inputStyle={{ color: 'black' }} onChange={(e) => console.log(e)} />
                     <Button title={'Create Account'} color={'primary'} style={{ width: (screenWidth * 75) / 100 }} radius={10} />
                     <Text>Or</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: '8%' }}>
