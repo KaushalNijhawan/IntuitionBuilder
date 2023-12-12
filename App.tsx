@@ -11,6 +11,7 @@ export type AppStackParamList = {
   Home: undefined;
   Login: undefined;
   SignUp: undefined;
+  ForgotPassword : undefined;
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -43,6 +44,12 @@ export default function App() {
               component={SignUp}
               options={{ title: 'SignUp' }}
             />
+            <Stack.Screen
+              name="ForgotPassword"
+              component={SignUp}
+              options={{ title: 'ForgotPassword' }}
+            />
+
           </Stack.Navigator>
         </NavigationContainer>
       </View>

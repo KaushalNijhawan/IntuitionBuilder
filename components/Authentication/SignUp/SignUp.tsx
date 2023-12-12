@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilState } from "recoil";
 import { databaseConnectionAtom } from "../../Atoms/DatabseAtom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../Database/Firebase";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth , app} from "../../Database/Firebase";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 
 type HomeScreenProps = {
@@ -34,6 +35,19 @@ const SignUp: React.FC<HomeScreenProps> = ({ navigation }) => {
 
     const handleLogin =  () => {
         navigation.navigate('Login');
+    }
+
+    const handleGoogleLogin = async () =>{
+        const provider = new GoogleAuthProvider();
+        provider.addScope('email');
+        provider.addScope('profile');
+        
+        await signInWithPopup(auth, provider).then((result)=>{
+            console.log(result);
+        }).catch((err)=>{
+            console.log(err);
+        })
+
     }
 
     const handleCreateUser = async () => {
@@ -68,7 +82,7 @@ const SignUp: React.FC<HomeScreenProps> = ({ navigation }) => {
                         <Text style={{ marginRight: '1%' }}>Already have a account</Text>
                         <Text style={{ textDecorationLine: 'underline', color: 'orange' }} onPress={handleLogin}>Login</Text>
                     </View>
-                    <Button color={"error"} style={{ width: (screenWidth * 75) / 100, marginTop: '5%' }} radius={10} title={"Google SignIn"} />
+                    <Button color={"error"} style={{ width: (screenWidth * 75) / 100, marginTop: '5%' }} radius={10} title={"Google SignIn"} onPress={handleGoogleLogin}/>
                 </View>
             </View>
         </KeyboardAvoidingView>
