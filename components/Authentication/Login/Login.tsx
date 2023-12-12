@@ -73,7 +73,7 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
                     }}>
                         <Text style={{marginTop:'10%' , fontSize:25, marginBottom:'10%'}}>Plase Confirm Your Email!</Text>
                         <Input placeholder="Enter Email.." textContentType={"name"} inputStyle={{ color: 'black'}} onChangeText={(text) => { setEmail(text) }} />
-                        <Button title={"Forgot Password!"} color={"warning"} style={{ width: (screenWidth * 75) / 100 }} radius={10} onPress={handleForgotPassword} />
+                        <Button title={"Forgot Password!"} color={"error"} style={{ width: (screenWidth * 75) / 100 }} radius={10} onPress={handleForgotPassword} />
                     </View>
                     :
                     <View style={{
