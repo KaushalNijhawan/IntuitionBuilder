@@ -6,12 +6,16 @@ import Login from './components/Authentication/Login/Login';
 import SignUp from './components/Authentication/SignUp/SignUp';
 import { RecoilRoot, useSetRecoilState } from "recoil";
 import { registerRootComponent } from 'expo';
+import { MainComponent } from './components/MainComponent/MainComponent';
+import { AvatarSelection } from './components/AvatarSelection/AvatarSelection';
 
 export type AppStackParamList = {
   Home: undefined;
   Login: undefined;
   SignUp: undefined;
   ForgotPassword : undefined;
+  Main: undefined;
+  AvatarSelection: undefined;
 };
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
@@ -22,7 +26,7 @@ export default function App() {
     <RecoilRoot>
       <View style={styles.container}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName='Home' screenOptions={{
+          <Stack.Navigator initialRouteName='AvatarSelection' screenOptions={{
             headerTitle: '', headerBackVisible: false, navigationBarHidden: true, gestureEnabled: false
             , headerStyle: {
               backgroundColor: 'white'
@@ -49,7 +53,16 @@ export default function App() {
               component={SignUp}
               options={{ title: 'ForgotPassword' }}
             />
-
+            <Stack.Screen
+              name="Main"
+              component={MainComponent}
+              options={{ title: 'Main' }}
+            />
+            <Stack.Screen
+              name="AvatarSelection"
+              component={AvatarSelection}
+              options={{ title: 'AvatarSelection' }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

@@ -44,6 +44,7 @@ const SignUp: React.FC<HomeScreenProps> = ({ navigation }) => {
         
         await signInWithPopup(auth, provider).then((result)=>{
             console.log(result);
+            navigation.navigate('Main');
         }).catch((err)=>{
             console.log(err);
         })
@@ -54,7 +55,7 @@ const SignUp: React.FC<HomeScreenProps> = ({ navigation }) => {
         if (username && password && confirmPassword && firebaseApp) {
             if (password === confirmPassword) {
                 let response = await createUserWithEmailAndPassword(auth, username, password);
-                console.log(response);
+                navigation.navigate('AvatarSelection')
             }
         }
     }

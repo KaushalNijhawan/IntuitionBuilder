@@ -46,6 +46,7 @@ const Login: React.FC<HomeScreenProps> = ({ navigation }) => {
                 setErroMessage('');
                 console.log(response);
                 console.log('Verified!');
+                navigation.navigate('Main');
             } catch (err) {
                 setErroMessage('Invalid Credentials!');
                 console.log(err);
